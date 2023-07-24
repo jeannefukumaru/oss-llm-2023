@@ -1,1 +1,1 @@
-# govtech-llm-2023
+# oss-llm-workshop-2023
