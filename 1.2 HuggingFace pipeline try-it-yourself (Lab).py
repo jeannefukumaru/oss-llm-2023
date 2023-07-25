@@ -1,4 +1,10 @@
 # Databricks notebook source
+# MAGIC %md 
+# MAGIC # HuggingFace transformers pipelines in MLflow
+# MAGIC ### Text Generation example (Lab)
+
+# COMMAND ----------
+
 # MAGIC %pip install mlflow==2.5.0
 # MAGIC dbutils.library.restartPython()
 
@@ -7,7 +13,8 @@
 import transformers
 import mlflow
 
-task = "text2text-generation"
+# <TODO: input the HuggingFace pipeline task name for text generation here>
+task = "YOUR CODE HERE"
 
 generation_pipeline = transformers.pipeline(
     task=task,
@@ -16,7 +23,8 @@ generation_pipeline = transformers.pipeline(
 
 # COMMAND ----------
 
-input_example = ["prompt 1", "prompt 2", "prompt 3"]
+# <TODO: provide a few input examples>
+input_example = ["EXAMPLE", "EXAMPLE HERE", "EXAMPLE HERE"]
 
 parameters = {"max_length": 512, "do_sample": True}
 
@@ -29,12 +37,13 @@ signature = mlflow.models.infer_signature(
 
 # COMMAND ----------
 
+# <TODO: fill in the missing parameters> 
 with mlflow.start_run() as run:
     model_info = mlflow.transformers.log_model(
-        transformers_model=generation_pipeline,
+        transformers_model="",  # YOUR HF PIPELINE HERE
         artifact_path="text_generator",
-        input_example=["prompt 1", "prompt 2", "prompt 3"],
-        signature=signature,
+        input_example="",  # WHAT GOES HERE? 
+        signature="",  # WHAT GOES HERE? 
         inference_config=parameters
     )
 
@@ -50,4 +59,9 @@ print(
 
 # COMMAND ----------
 
-
+# TODO: test with your own prompt
+print(
+    sentence_generator.predict(
+        ["YOUR PROMPT HERE"],
+    )
+)
