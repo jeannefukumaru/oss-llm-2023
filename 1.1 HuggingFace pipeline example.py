@@ -45,6 +45,8 @@ translation_pipeline = transformers.pipeline(
 # MAGIC MLflow model signatures are a description of a model's expected inputs and outputs. This information is useful for downstream tooling - for example, deployment tools use model signatures to validate that the inputs passed to a model for inference are correct
 # MAGIC
 # MAGIC The model signature is stored in JSON format in the MLmodel file in your model artifacts, together with other model metadata. 
+# MAGIC
+# MAGIC <img src="https://github.com/jeannefukumaru/oss-llm-2023/raw/main/images/model_metadata.png">
 
 # COMMAND ----------
 
@@ -77,6 +79,8 @@ with mlflow.start_run():
 
 # MAGIC %md 
 # MAGIC Additionally, the MLflow transformers flavor will automatically pull the state of the Model Card from the Hugging Face Hub upon saving or logging of a model or pipeline. This feature allows for a point-in-time reference of the state of the underlying model information for both general reference and auditing purposes.
+# MAGIC
+# MAGIC <img src="https://github.com/jeannefukumaru/oss-llm-2023/raw/main/images/model_card.png">
 
 # COMMAND ----------
 
@@ -120,7 +124,3 @@ print(reconstructed_response)
 # MAGIC %md 
 # MAGIC # Further references 
 # MAGIC HuggingFace transformers are not the only LLM model type that MLflow supports. We also support Open AI functions and Langchain. For more information, see this [blog post](https://www.databricks.com/blog/2023/04/18/introducing-mlflow-23-enhanced-native-llm-support-and-new-features.html) 
-
-# COMMAND ----------
-
-

@@ -10,6 +10,11 @@
 
 # COMMAND ----------
 
+# MAGIC %md 
+# MAGIC # Load a transformers pipeline for text generation via the transformers library
+
+# COMMAND ----------
+
 import transformers
 import mlflow
 
@@ -20,6 +25,17 @@ generation_pipeline = transformers.pipeline(
     task=task,
     model="declare-lab/flan-alpaca-base",
 )
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC # Create a model signature and input examples for the pipeline
+# MAGIC
+# MAGIC MLflow model signatures are a description of a model's expected inputs and outputs. This information is useful for downstream tooling - for example, deployment tools use model signatures to validate that the inputs passed to a model for inference are correct
+# MAGIC
+# MAGIC The model signature is stored in JSON format in the MLmodel file in your model artifacts, together with other model metadata. 
+# MAGIC
+# MAGIC <img src="https://github.com/jeannefukumaru/oss-llm-2023/raw/main/images/model_metadata.png">
 
 # COMMAND ----------
 
@@ -49,6 +65,11 @@ with mlflow.start_run() as run:
 
 # COMMAND ----------
 
+# MAGIC %md 
+# MAGIC # Predictions
+
+# COMMAND ----------
+
 sentence_generator = mlflow.pyfunc.load_model(model_info.model_uri)
 
 print(
@@ -65,3 +86,9 @@ print(
         ["YOUR PROMPT HERE"],
     )
 )
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC # Further references 
+# MAGIC HuggingFace transformers are not the only LLM model type that MLflow supports. We also support Open AI functions and Langchain. For more information, see this [blog post](https://www.databricks.com/blog/2023/04/18/introducing-mlflow-23-enhanced-native-llm-support-and-new-features.html) 
