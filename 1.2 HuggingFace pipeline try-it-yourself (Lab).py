@@ -1,7 +1,7 @@
 # Databricks notebook source
 # MAGIC %md 
 # MAGIC # HuggingFace transformers pipelines in MLflow
-# MAGIC ### Text Generation example (Lab)
+# MAGIC ### Lab: Text Generation
 
 # COMMAND ----------
 
