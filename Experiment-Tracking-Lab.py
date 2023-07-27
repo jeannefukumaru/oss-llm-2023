@@ -33,10 +33,14 @@
 
 # COMMAND ----------
 
+# MAGIC %fs ls dbfs:/databricks-datasets/learning-spark-v2/sf-airbnb
+
+# COMMAND ----------
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-df = pd.read_parquet("/dbfs/databricks-datasets/learning-spark-v2/sf-airbnb/sf-airbnb-clean.parquet/")
+df = pd.read_csv("/dbfs/databricks-datasets/learning-spark-v2/sf-airbnb/sf-airbnb-numeric.csv")
 X_train, X_test, y_train, y_test = train_test_split(df.drop(["price"], axis=1), df["price"], random_state=42)
 
 # COMMAND ----------
